@@ -1,4 +1,4 @@
-FROM python:3.8-alpine
+FROM python:3.8
 
 # By default, listen on port 5000
 EXPOSE 5000/tcp
