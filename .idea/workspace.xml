@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4616fd8a-d32e-4194-b597-4a8c0fb45265" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/app/Recipe.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/app/Recipe.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/app/ScrapedRecipe.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/app/ScrapedRecipe.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/api/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrapper/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/scrapper/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
