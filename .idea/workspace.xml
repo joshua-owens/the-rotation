@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4616fd8a-d32e-4194-b597-4a8c0fb45265" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/api/app/Recipe.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/app/Scraper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapper/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/api/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/resources/lang/en/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/resources/lang/en/validation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/resources/views/welcome.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +32,12 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="PhpWorkspaceProjectConfiguration">
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/scrapper/flaskr/scrape.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Makefile" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/scrapper/Dockerfile" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="sail-8.0/app:latest">
     <include_path>
       <path value="$PROJECT_DIR$/api/vendor/psr/http-client" />
       <path value="$PROJECT_DIR$/api/vendor/psr/simple-cache" />
@@ -150,8 +162,10 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="credentialsType com.jetbrains.php.remote.interpreter.ui.PhpCreateRemoteSdkForm" value="Docker" />
+    <property name="credentialsType com.jetbrains.php.remote.interpreter.ui.PhpInplaceEditRemoteSdkForm" value="Docker" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -167,7 +181,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1631380964371</updated>
-      <workItem from="1631380967676" duration="675000" />
+      <workItem from="1631380967676" duration="4782000" />
     </task>
     <servers />
   </component>

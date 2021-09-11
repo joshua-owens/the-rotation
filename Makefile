@@ -1,13 +1,17 @@
 ROOT_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
+args = `arg="$(filter-out $@,$(MAKECMDGOALS))" && echo $${arg:-${1}}`
 
-build:
-	docker-compose -f ${ROOT_DIR}/docker-compose.yml build \
+compose-build:
+	cd ${ROOT_DIR} && docker-compose build \
 	&& cd ${ROOT_DIR}/api && ./vendor/bin/sail build
 
-up:
-	docker-compose -f ${ROOT_DIR}/docker-compose.yml up -d \
+compose-up:
+	cd ${ROOT_DIR} && docker-compose up -d \
 	&& cd ${ROOT_DIR}/api && ./vendor/bin/sail up -d
 
-down:
+compose-down:
 	cd ${ROOT_DIR} && docker-compose down \
 	&& cd ${ROOT_DIR}/api && ./vendor/bin/sail down
+
+laravel-sail:
+	cd ${ROOT_DIR}/api && ./vendor/bin/sail $(call args,defaultstring)
