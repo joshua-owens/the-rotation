@@ -9,7 +9,7 @@ class ScrapedRecipe extends Recipe
     /**
      * @var array $data
      */
-    private $data;
+    protected $data;
 
     public function __construct(array $data)
     {
@@ -19,7 +19,7 @@ class ScrapedRecipe extends Recipe
     /**
      * @return string
      */
-    public function title(): string
+    protected function title(): string
     {
         return $this->data['title'] ?? '';
     }
@@ -27,7 +27,7 @@ class ScrapedRecipe extends Recipe
     /**
      * @return int
      */
-    public function time(): int
+    protected function time(): int
     {
         return $this->data['time'] ?? 0;
     }
@@ -35,7 +35,7 @@ class ScrapedRecipe extends Recipe
     /**
      * @return string
      */
-    public function servings(): string
+    protected function servings(): string
     {
         return $this->data['servings'] ?? '';
     }
@@ -43,7 +43,7 @@ class ScrapedRecipe extends Recipe
     /**
      * @return Collection
      */
-    public function ingredients(): Collection
+    protected function ingredients(): Collection
     {
         return collect($this->data['ingredients']) ?? collect();
     }
@@ -51,7 +51,7 @@ class ScrapedRecipe extends Recipe
     /**
      * @return Collection
      */
-    public function instructions(): Collection
+    protected function instructions(): Collection
     {
         return collect($this->data['instructions']) ?? collect();
     }
@@ -59,7 +59,7 @@ class ScrapedRecipe extends Recipe
     /**
      * @return string
      */
-    public function image(): string
+    protected function image(): string
     {
         return $this->data['image'] ?? '';
     }
@@ -67,7 +67,7 @@ class ScrapedRecipe extends Recipe
     /**
      * @return string
      */
-    public function url(): string
+    protected function url(): string
     {
         return $this->data['url'] ?? '';
     }

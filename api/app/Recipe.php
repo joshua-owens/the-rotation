@@ -14,13 +14,13 @@ use Illuminate\Support\Collection;
  * @property-read string $url
  */
 abstract class Recipe {
-    abstract public function title(): string;
-    abstract public function time(): int;
-    abstract public function servings(): string;
-    abstract public function ingredients(): Collection;
-    abstract public function instructions(): Collection;
-    abstract public function image(): string;
-    abstract public function url(): string;
+    abstract protected function title(): string;
+    abstract protected function time(): int;
+    abstract protected function servings(): string;
+    abstract protected function ingredients(): Collection;
+    abstract protected function instructions(): Collection;
+    abstract protected function image(): string;
+    abstract protected function url(): string;
 
     public function __get(string $name)
     {
