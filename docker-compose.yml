@@ -1,8 +1,8 @@
 version: "3.3"
 services:
-  web:
+  scrapper:
     build: 
-      context: .
+      context: scrapper
       dockerfile: Dockerfile
     ports:
       - "5000:5000"
@@ -11,6 +11,6 @@ services:
       - FLASK_ENV=development
       - FLASK_RUN_HOST=0.0.0.0
     volumes:
-        - '.:/app'
-  redis:
-    image: "redis:alpine"
+        - './scrapper:/app'
+#  redis:
+#    image: "redis:alpine"
