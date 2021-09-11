@@ -15,7 +15,7 @@ class ScrapeRecipe implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     /**
-     * @var $url string
+     * @var string $url
      */
     private $url;
 
