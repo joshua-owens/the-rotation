@@ -3,5 +3,5 @@
 namespace App;
 
 interface Scraper {
-    public function scrape(): Recipe;
+    public function scrape(string $url): Recipe;
 }

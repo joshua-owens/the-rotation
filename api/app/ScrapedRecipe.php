@@ -7,7 +7,7 @@ use Illuminate\Support\Collection;
 class ScrapedRecipe extends Recipe
 {
     /**
-     * @var array $data
+     * @var array
      */
     protected $data;
 
