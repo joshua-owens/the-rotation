@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Exceptions\FailedToScrapeUrlException;
 use Illuminate\Support\Facades\Http;
 
 class RecipeScraper implements Scraper
@@ -16,15 +17,23 @@ class RecipeScraper implements Scraper
         $this->apiUrl = config('scraper.url');
     }
 
+    /**
+     * @param string $url
+     * @return Recipe
+     * @throws FailedToScrapeUrlException
+     */
     public function scrape(string $url): Recipe
     {
         $endpoint = "$this->apiUrl/scrape/";
 
-        $data = Http::asForm()->post($endpoint, [
+        $response = Http::asForm()->post($endpoint, [
             'url' => $url,
-        ])
-            ->json();
+        ]);
 
-        return new ScrapedRecipe($data);
+        if ($response->failed()) {
+            throw new FailedToScrapeUrlException;
+        }
+
+        return new ScrapedRecipe($response->json());
     }
 }
