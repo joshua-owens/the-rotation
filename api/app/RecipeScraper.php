@@ -13,14 +13,14 @@ class RecipeScraper implements Scraper
 
     public function __construct()
     {
-        $this->apiUrl = config_path('scraper.url');
+        $this->apiUrl = config('scraper.url');
     }
 
     public function scrape(string $url): Recipe
     {
-        $endpoint = "$this->apiUrl/scrape";
+        $endpoint = "$this->apiUrl/scrape/";
 
-        $data = Http::post($endpoint, [
+        $data = Http::asForm()->post($endpoint, [
             'url' => $url,
         ])
             ->json();

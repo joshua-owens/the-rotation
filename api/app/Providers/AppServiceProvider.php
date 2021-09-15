@@ -2,27 +2,19 @@
 
 namespace App\Providers;
 
+use App\RecipeScraper;
+use App\Scraper;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
-    }
 
     /**
-     * Bootstrap any application services.
+     * All the container singletons that should be registered.
      *
-     * @return void
+     * @var array
      */
-    public function boot()
-    {
-        //
-    }
+    public $singletons = [
+        Scraper::class => RecipeScraper::class,
+    ];
 }

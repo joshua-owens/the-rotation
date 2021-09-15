@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4616fd8a-d32e-4194-b597-4a8c0fb45265" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/api/app/RecipeScraper.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/config/scraper.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/app/Jobs/ScrapeRecipe.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/app/Jobs/ScrapeRecipe.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/app/ScrapedRecipe.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/app/ScrapedRecipe.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/app/Scraper.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/app/Scraper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/app/RecipeScraper.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/app/RecipeScraper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

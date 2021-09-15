@@ -36,5 +36,7 @@ class ScrapeRecipe implements ShouldQueue
      */
     public function handle(Scraper $scraper)
     {
+        $recipe = $scraper->scrape($this->url);
+        dd($recipe);
     }
 }
