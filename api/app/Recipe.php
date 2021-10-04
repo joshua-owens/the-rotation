@@ -4,26 +4,71 @@ namespace App;
 
 use Illuminate\Support\Collection;
 
-/**
- * @property-read string $title
- * @property-read string $time
- * @property-read string $servings
- * @property-read Collection $ingredients
- * @property-read Collection instructions
- * @property-read string $image
- * @property-read string $url
- */
-abstract class Recipe {
-    abstract protected function title(): string;
-    abstract protected function time(): int;
-    abstract protected function servings(): string;
-    abstract protected function ingredients(): Collection;
-    abstract protected function instructions(): Collection;
-    abstract protected function image(): string;
-    abstract protected function url(): string;
+class Recipe
+{
+    /**
+     * @var array
+     */
+    protected $data;
 
-    public function __get(string $name)
+    public function __construct(array $data)
     {
-        return $this->{$name}();
+        $this->data = $data;
+    }
+
+    /**
+     * @return string
+     */
+    protected function title(): string
+    {
+        return $this->data['title'] ?? '';
+    }
+
+    /**
+     * @return int
+     */
+    protected function time(): int
+    {
+        return $this->data['time'] ?? 0;
+    }
+
+    /**
+     * @return string
+     */
+    protected function servings(): string
+    {
+        return $this->data['servings'] ?? '';
+    }
+
+    /**
+     * @return Collection
+     */
+    protected function ingredients(): Collection
+    {
+        return collect($this->data['ingredients']) ?? collect();
+    }
+
+    /**
+     * @return Collection
+     */
+    protected function instructions(): Collection
+    {
+        return collect($this->data['instructions']) ?? collect();
+    }
+
+    /**
+     * @return string
+     */
+    protected function image(): string
+    {
+        return $this->data['image'] ?? '';
+    }
+
+    /**
+     * @return string
+     */
+    protected function url(): string
+    {
+        return $this->data['url'] ?? '';
     }
 }

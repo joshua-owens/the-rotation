@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Scraper;
+use App\RecipeScraper;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -34,7 +34,7 @@ class ScrapeRecipe implements ShouldQueue
      *
      * @return void
      */
-    public function handle(Scraper $scraper)
+    public function handle(RecipeScraper $scraper)
     {
         $recipe = $scraper->scrape($this->url);
         dd($recipe);

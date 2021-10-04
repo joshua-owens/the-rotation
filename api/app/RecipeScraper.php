@@ -5,7 +5,7 @@ namespace App;
 use App\Exceptions\FailedToScrapeUrlException;
 use Illuminate\Support\Facades\Http;
 
-class RecipeScraper implements Scraper
+class RecipeScraper
 {
     /**
      * @var string
@@ -34,6 +34,6 @@ class RecipeScraper implements Scraper
             throw new FailedToScrapeUrlException;
         }
 
-        return new ScrapedRecipe($response->json());
+        return new Recipe($response->json());
     }
 }
