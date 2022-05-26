@@ -7,6 +7,8 @@ import (
 	"net/http"
 	"os"
 	"time"
+
+	"github.com/joshua-owens/togo"
 )
 
 type config struct {
@@ -15,8 +17,9 @@ type config struct {
 }
 
 type application struct {
-	config config
-	logger *log.Logger
+	config  config
+	logger  *log.Logger
+	scraper interface{}
 }
 
 func main() {
@@ -27,10 +30,12 @@ func main() {
 	flag.Parse()
 
 	logger := log.New(os.Stdout, "", log.Ldate|log.Ltime)
+	scraper := togo.New()
 
 	app := &application{
-		config: cfg,
-		logger: logger,
+		config:  cfg,
+		logger:  logger,
+		scraper: scraper,
 	}
 
 	srv := http.Server{

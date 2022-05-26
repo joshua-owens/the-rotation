@@ -1,2 +1,4 @@
 github.com/go-chi/chi/v5 v5.0.7 h1:rDTPXLDHGATaeHvVlLcR4Qe0zftYethFucbjVQ1PxU8=
 github.com/go-chi/chi/v5 v5.0.7/go.mod h1:DslCQbL2OYiznFReuXYUmQ2hGd1aDpCnlMNITLSKoi8=
+github.com/joshua-owens/togo v0.0.0-20220526143222-781bc90e2579 h1:AQZJt0xypcv/n5yFG0QlymgTkAh01chc73+goPlzDQE=
+github.com/joshua-owens/togo v0.0.0-20220526143222-781bc90e2579/go.mod h1:9Wng68MSgORXaihgr2AE8o6PQS314VZB27BLLngY88s=
