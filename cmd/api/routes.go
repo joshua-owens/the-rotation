@@ -1,11 +1,16 @@
 package main
 
 import (
+	"encoding/json"
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 )
+
+type RecipeImport struct {
+	Url string `json:"url"`
+}
 
 func (app *application) routes() http.Handler {
 
@@ -16,6 +21,17 @@ func (app *application) routes() http.Handler {
 			"hello": "world",
 		}
 		app.json(w, http.StatusOK, data, nil)
+	})
+
+	r.Post("/recipes/import", func(w http.ResponseWriter, r *http.Request) {
+		var ri RecipeImport
+		err := json.NewDecoder(r.Body).Decode(&ri)
+
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusBadRequest)
+		}
+
+		app.logger.Println(ri.Url)
 	})
 
 	return r
