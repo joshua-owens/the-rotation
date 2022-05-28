@@ -12,7 +12,10 @@ func (app *application) routes() http.Handler {
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
 	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("hello world"))
+		data := map[string]string{
+			"hello": "world",
+		}
+		app.json(w, http.StatusOK, data, nil)
 	})
 
 	return r
