@@ -2,7 +2,7 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
+	"log"
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
@@ -34,7 +34,14 @@ func (app *application) routes() http.Handler {
 
 		p := app.scraper.Scrape(ir.Url)
 
-		fmt.Printf("%v", p)
+		b, err := json.Marshal(p)
+		if err != nil {
+			log.Println("failed to serialize response:", err)
+			return
+		}
+		w.Header().Add("Content-Type", "application/json")
+		w.Write(b)
+
 	})
 
 	return r

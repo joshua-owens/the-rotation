@@ -1,7 +1,7 @@
 package scraper
 
 import (
-	"fmt"
+	"encoding/json"
 
 	"github.com/gocolly/colly/v2"
 )
@@ -12,23 +12,26 @@ func New() *Scraper {
 	return &Scraper{}
 }
 
-type PageInfo struct {
-	StatusCode int
-	Text       string
+type ListElement struct {
+	SchemaType string `json:"@type"`
+	SchemaItem string `json:""`
 }
 
-func (s *Scraper) Scrape(url string) *PageInfo {
+type Schema struct {
+	ListElements []ListElement
+}
+
+func (s *Scraper) Scrape(url string) Schema {
 
 	c := colly.NewCollector()
 
-	p := &PageInfo{}
+	schema := *&Schema{}
 
 	c.OnHTML(`script[type="application/ld+json"]`, func(h *colly.HTMLElement) {
-		fmt.Printf("%s", h.Text)
-		p.Text = h.Text
+		json.Unmarshal([]byte(h.Text), &schema.ListElements)
 	})
 
 	c.Visit(url)
 
-	return p
+	return schema
 }
