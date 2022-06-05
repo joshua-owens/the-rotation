@@ -8,7 +8,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/joshua-owens/togo"
+	"github.com/joshua-owens/the-rotation/internal/scraper"
 )
 
 type config struct {
@@ -19,7 +19,7 @@ type config struct {
 type application struct {
 	config  config
 	logger  *log.Logger
-	scraper interface{}
+	scraper *scraper.Scraper
 }
 
 func main() {
@@ -30,7 +30,7 @@ func main() {
 	flag.Parse()
 
 	logger := log.New(os.Stdout, "", log.Ldate|log.Ltime)
-	scraper := togo.New()
+	scraper := scraper.New()
 
 	app := &application{
 		config:  cfg,

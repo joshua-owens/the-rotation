@@ -8,7 +8,7 @@ import (
 	"github.com/go-chi/chi/v5/middleware"
 )
 
-type RecipeImport struct {
+type ImportRequest struct {
 	Url string `json:"url"`
 }
 
@@ -21,14 +21,14 @@ func (app *application) routes() http.Handler {
 	})
 
 	r.Post("/recipes/import", func(w http.ResponseWriter, r *http.Request) {
-		var ri RecipeImport
-		err := json.NewDecoder(r.Body).Decode(&ri)
+		var ir ImportRequest
+		err := json.NewDecoder(r.Body).Decode(&ir)
 
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusBadRequest)
 		}
 
-		app.logger.Println(ri.Url)
+		app.scraper.Scrape(ir.Url)
 	})
 
 	return r
