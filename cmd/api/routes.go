@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
@@ -31,7 +32,9 @@ func (app *application) routes() http.Handler {
 			http.Error(w, err.Error(), http.StatusBadRequest)
 		}
 
-		app.scraper.Scrape(ir.Url)
+		p := app.scraper.Scrape(ir.Url)
+
+		fmt.Printf("%v", p)
 	})
 
 	return r
