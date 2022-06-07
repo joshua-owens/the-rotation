@@ -9,10 +9,6 @@ import (
 	"github.com/go-chi/chi/v5/middleware"
 )
 
-type ImportRequest struct {
-	Url string `json:"url"`
-}
-
 func (app *application) routes() http.Handler {
 
 	r := chi.NewRouter()
@@ -25,14 +21,16 @@ func (app *application) routes() http.Handler {
 	})
 
 	r.Post("/recipes/import", func(w http.ResponseWriter, r *http.Request) {
-		var ir ImportRequest
-		err := json.NewDecoder(r.Body).Decode(&ir)
+		var input struct {
+			Url string `json:"url"`
+		}
+		err := json.NewDecoder(r.Body).Decode(&input)
 
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusBadRequest)
 		}
 
-		p := app.scraper.Scrape(ir.Url)
+		p := app.scraper.Scrape(input.Url)
 
 		b, err := json.Marshal(p)
 		if err != nil {
