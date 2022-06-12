@@ -12,7 +12,7 @@ func (app *application) logError(r *http.Request, err error) {
 	app.logger.Println(err)
 }
 
-func (app *application) json(w http.ResponseWriter, status int, data interface{}, headers http.Header) error {
+func (app *application) writeJSON(w http.ResponseWriter, status int, data interface{}, headers http.Header) error {
 	js, err := json.Marshal(data)
 
 	if err != nil {
@@ -36,7 +36,7 @@ func (app *application) error(w http.ResponseWriter, r *http.Request, status int
 
 	rw := responseWrapper{"error": message}
 
-	err := app.json(w, status, rw, nil)
+	err := app.writeJSON(w, status, rw, nil)
 
 	if err != nil {
 		app.logError(r, err)

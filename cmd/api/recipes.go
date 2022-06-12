@@ -8,7 +8,7 @@ import (
 
 func (app *application) importRecipeHandler(w http.ResponseWriter, r *http.Request) {
 	var input struct {
-		Url string `json:"url"`
+		Url string `writeJSON:"url"`
 	}
 	err := json.NewDecoder(r.Body).Decode(&input)
 

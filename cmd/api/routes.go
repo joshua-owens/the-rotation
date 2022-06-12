@@ -3,7 +3,6 @@ package main
 import (
 	"net/http"
 
-	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 )
 
@@ -15,7 +14,7 @@ func (app *application) routes() http.Handler {
 		data := map[string]string{
 			"hello": "world",
 		}
-		app.json(w, http.StatusOK, data, nil)
+		app.writeJSON(w, http.StatusOK, data, nil)
 	})
 
 	r.Post("/recipes/import", app.importRecipeHandler)
