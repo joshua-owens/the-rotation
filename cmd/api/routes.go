@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/go-chi/chi/v5"
 	"net/http"
 
 	"github.com/go-chi/chi/v5/middleware"
@@ -18,6 +19,9 @@ func (app *application) routes() http.Handler {
 	})
 
 	r.Post("/recipes/import", app.importRecipeHandler)
+
+	r.NotFound(app.notFoundResponse)
+	r.MethodNotAllowed(app.methodNotAllowedResponse)
 
 	return r
 }
