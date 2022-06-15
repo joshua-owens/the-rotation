@@ -10,10 +10,10 @@ func (app *application) importRecipeHandler(w http.ResponseWriter, r *http.Reque
 	var input struct {
 		Url string `writeJSON:"url"`
 	}
-	err := json.NewDecoder(r.Body).Decode(&input)
+	err := app.readJSON(w, r, &input)
 
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
+		app.badRequestResponse(w, r, err)
 	}
 
 	p := app.scraper.Scrape(input.Url)
