@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"strings"
 )
 
 type responseWrapper map[string]interface{}
@@ -30,7 +31,19 @@ func (app *application) writeJSON(w http.ResponseWriter, status int, data interf
 	return nil
 }
 func (app *application) readJSON(w http.ResponseWriter, r *http.Request, dst interface{}) error {
-	err := json.NewDecoder(r.Body).Decode(dst)
+	maxBytes := 1_048_856
+	r.Body = http.MaxBytesReader(w, r.Body, int64(maxBytes))
+
+	// Initialize the json.Decoder, and call the DisallowUnknownFields() method on it
+	// before decoding. This means that if the JSON from the client now includes any
+	// field which cannot be mapped to the target destination, the decoder will return
+	// an error instead of just ignoring the field.
+	dec := json.NewDecoder(r.Body)
+	dec.DisallowUnknownFields()
+
+	// Decode the request body into the target destination.
+	err := dec.Decode(dst)
+
 	if err != nil {
 		// If there is an error during decoding, start the triage...
 		var syntaxError *json.SyntaxError
@@ -56,9 +69,21 @@ func (app *application) readJSON(w http.ResponseWriter, r *http.Request, dst int
 
 		case errors.As(err, &invalidUnmarshalError):
 			panic(err)
+		case strings.HasPrefix(err.Error(), "json: unknown field "):
+			fieldName := strings.TrimPrefix(err.Error(), "json: unknown field ")
+			return fmt.Errorf("body contains unknown key %s", fieldName)
+		// MaxBytesError introduced in 1.19 https://tip.golang.org/doc/go1.19
+		case err.Error() == "http: request body too large":
+			return fmt.Errorf("body of must not be larger than %d bytes", maxBytes)
+
 		default:
 			return err
 		}
+	}
+
+	err = dec.Decode(&struct{}{})
+	if err != io.EOF {
+		return errors.New("body must only contain a single JSON value")
 	}
 
 	return nil
